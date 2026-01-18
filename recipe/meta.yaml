@@ -1,5 +1,5 @@
 {% set name = "pyrdfa3" %}
-{% set version = "3.6.4" %}
+{% set version = "3.6.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 64712d1a4bf21829652b39715bada6e7c03bcf19cb49f962c190a38f46172243
+  sha256: 0fc28ff1426af805b100aff7162db6a43fa215e37f92bce9b113b465feb563ea
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
