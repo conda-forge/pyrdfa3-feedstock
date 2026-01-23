@@ -1,0 +1,46 @@
+schema_version: 1
+
+context:
+  name: pyrdfa3
+  version: 3.6.5
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
+  sha256: 0fc28ff1426af805b100aff7162db6a43fa215e37f92bce9b113b465feb563ea
+
+build:
+  number: 0
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - setuptools >=71.1.0
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - requests >=2.32.3
+    - rdflib >=7.0.0
+    - html5lib >=1.1
+
+tests:
+  - python:
+      imports:
+        - pyRdfa
+      pip_check: true
+      python_version: ${{ python_min }}.*
+
+about:
+  summary: pyRdfa distiller/parser library
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/prrvchr/pyrdfa3/
+
+extra:
+  recipe-maintainers:
+    - thewchan
